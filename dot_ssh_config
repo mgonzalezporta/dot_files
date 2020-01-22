@@ -1,0 +1,15 @@
+Host aquila
+    HostName aquilaln2
+    User gonzalezpmdm
+    IdentityFile ~/.ssh/aquilaln2_rsa
+Host aquilaln1
+    HostName aquilaln1
+    User gonzalezpmdm
+    IdentityFile ~/.ssh/aquilaln1_rsa  
+Host nscc
+    HostName nscc02
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_rsa
+    ProxyCommand ssh -i ~/.ssh/nscc_rsa gonzalez@astar.nscc.sg nc %h %p
+Host github.com
+    IdentityFile ~/.ssh/github_rsa
