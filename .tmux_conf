@@ -8,7 +8,7 @@ bind-key C-a send-prefix
 bind-key -n C-T new-window
 bind-key -n C-W command-prompt "rename-window %%"
 bind-key -n C-H split-window -h
-bind-key -n C-V split-window -v
+bind-key -n C-J split-window -v
 bind-key -n C-Z split-window -v
 bind-key -n C-S-Left swap-window -t :-
 bind-key -n C-S-Right swap-window -t :+
@@ -22,7 +22,6 @@ bind-key -n C-F command-prompt -p find-session 'switch-client -t %%'
 bind-key -n C-K command-prompt 'kill-session -t %%'
 
 # To make ctrl-arrow, etc. work
-set -g default-terminal xterm-256color
 set-window-option -g xterm-keys on
 
 # Ctrl-Left/Right cycles thru windows (no prefix)
@@ -39,43 +38,45 @@ bind-key -n C-R source-file ~/.tmux.conf \; display-message "Config reloaded..."
 # Zoom
 bind-key -n C-Z resize-pane -Z \; display-message "zoomed"
 
+# Enable mouse clicking
+set -g mouse-select-pane on
+
 # Boost history limit
 set -g history-limit 30000
 setw -g automatic-rename on
 
-# THEME
-# Powerline Blue Block - Tmux Theme
-# Created by Jim Myhrberg <contact@jimeh.me>
+# 256 color
+set -g default-terminal "screen-256color"
 
+# COLOUR (Solarized 256)
+# https://github.com/seebi/tmux-colors-solarized/blob/master/tmuxcolors-256.conf
+
+# default statusbar colors
+set-option -g status-style fg=colour136,bg=colour235 #yellow and base02
+
+# default window title colors
+set-window-option -g window-status-style fg=colour244,bg=default #base0 and default
+
+# active window title colors
+set-window-option -g window-status-current-style fg=colour166,bg=default #orange and default
+
+# pane border
+set-option -g pane-border-style fg=colour235 #base02
+set-option -g pane-active-border-style fg=colour240 #base01
+
+# message text
+set-option -g message-style fg=colour166,bg=colour235 #orange and base02
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+# clock
+set-window-option -g clock-mode-colour colour64 #green
+
+# bell
+set-window-option -g window-status-bell-style fg=colour235,bg=colour160 #base02, red
+
+# Extra settings
 # Status update interval
 set -g status-interval 1
-
-# Basic status bar colors
-set -g status-fg colour240
-set -g status-bg colour233
-
-# Left side of status bar
-set -g status-left-length 40
-set -g status-left "#[fg=colour232,bg=colour24,bold] #S #[fg=colour24,bg=colour240,nobold]#[fg=colour233,bg=colour240] #(whoami) #[fg=colour240,bg=colour235]#[fg=colour240,bg=colour235] #I:#P #[fg=colour235,bg=colour233,nobold]"
-
-# Right side of status bar
-set -g status-right-length 150
-set -g status-right "M:#(qstat | awk '$5 == \"R\"' | wc -l)/#(qstat | awk '$5 == \"Q\"' | wc -l)/#(qstat | awk '$5 == \"Eqw\"' | wc -l) A:#(qstat -u '*' | awk '$5 == \"R\"' | wc -l)/#(qstat -u '*' | awk '$5 == \"Q\"' | wc -l)/#(qstat -u '*' | awk '$5 == \"Eqw\"' | wc -l) #[fg=colour235,bg=colour233]#[fg=colour240,bg=colour235] %H:%M:%S #[fg=colour240,bg=colour235]#[fg=colour233,bg=colour240] %d-%b-%y #[fg=colour245,bg=colour240]#[fg=colour232,bg=colour245,bold]"
-
-# Window status
-set -g window-status-format " #I:#W#F "
-set -g window-status-current-format " #I:#W#F "
-
-# Window separator
-set -g window-status-separator ""
-
-# Window status alignment
-set -g status-justify left
-
-# Pane number indicator
-set -g display-panes-colour colour233
-set -g display-panes-active-colour colour245
-
-# Clock mode
-set -g clock-mode-colour colour24
-set -g clock-mode-style 24
