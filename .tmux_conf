@@ -1,0 +1,81 @@
+# Make it use C-a, similar to screen..
+unbind C-b
+unbind l
+set -g prefix C-a
+bind-key C-a send-prefix
+
+# Windows
+bind-key -n C-T new-window
+bind-key -n C-W command-prompt "rename-window %%"
+bind-key -n C-H split-window -h
+bind-key -n C-V split-window -v
+bind-key -n C-Z split-window -v
+bind-key -n C-S-Left swap-window -t :-
+bind-key -n C-S-Right swap-window -t :+
+bind-key -n C-X confirm-before "kill-window"
+# bind-key -n C-D confirm-before "kill-pane"
+
+# Sessions
+bind-key -n C-N new-session
+bind-key -n C-S command-prompt 'rename-session %%'
+bind-key -n C-F command-prompt -p find-session 'switch-client -t %%'
+bind-key -n C-K command-prompt 'kill-session -t %%'
+
+# To make ctrl-arrow, etc. work
+set -g default-terminal xterm-256color
+set-window-option -g xterm-keys on
+
+# Ctrl-Left/Right cycles thru windows (no prefix)
+bind-key -n "C-Left"  select-window -t :-
+bind-key -n "C-Right" select-window -t :+
+
+# Ctrl-Up/Down cyles thru panes (no prefix)
+bind-key -n "C-Up"   select-pane -t :.-
+bind-key -n "C-Down" select-pane -t :.+
+
+# Reload key
+bind-key -n C-R source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+# Zoom
+bind-key -n C-Z resize-pane -Z \; display-message "zoomed"
+
+# Boost history limit
+set -g history-limit 30000
+setw -g automatic-rename on
+
+# THEME
+# Powerline Blue Block - Tmux Theme
+# Created by Jim Myhrberg <contact@jimeh.me>
+
+# Status update interval
+set -g status-interval 1
+
+# Basic status bar colors
+set -g status-fg colour240
+set -g status-bg colour233
+
+# Left side of status bar
+set -g status-left-length 40
+set -g status-left "#[fg=colour232,bg=colour24,bold] #S #[fg=colour24,bg=colour240,nobold]#[fg=colour233,bg=colour240] #(whoami) #[fg=colour240,bg=colour235]#[fg=colour240,bg=colour235] #I:#P #[fg=colour235,bg=colour233,nobold]"
+
+# Right side of status bar
+set -g status-right-length 150
+set -g status-right "M:#(qstat | awk '$5 == \"R\"' | wc -l)/#(qstat | awk '$5 == \"Q\"' | wc -l)/#(qstat | awk '$5 == \"Eqw\"' | wc -l) A:#(qstat -u '*' | awk '$5 == \"R\"' | wc -l)/#(qstat -u '*' | awk '$5 == \"Q\"' | wc -l)/#(qstat -u '*' | awk '$5 == \"Eqw\"' | wc -l) #[fg=colour235,bg=colour233]#[fg=colour240,bg=colour235] %H:%M:%S #[fg=colour240,bg=colour235]#[fg=colour233,bg=colour240] %d-%b-%y #[fg=colour245,bg=colour240]#[fg=colour232,bg=colour245,bold]"
+
+# Window status
+set -g window-status-format " #I:#W#F "
+set -g window-status-current-format " #I:#W#F "
+
+# Window separator
+set -g window-status-separator ""
+
+# Window status alignment
+set -g status-justify left
+
+# Pane number indicator
+set -g display-panes-colour colour233
+set -g display-panes-active-colour colour245
+
+# Clock mode
+set -g clock-mode-colour colour24
+set -g clock-mode-style 24
