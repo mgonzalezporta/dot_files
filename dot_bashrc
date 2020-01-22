@@ -12,7 +12,7 @@ export TERM=screen-256color
 
 # Aliases
 alias tmux="${HOME}/local/bin/tmux -2"
-alias mux="tmux source-file ${HOME}/.tmux_conf; tmux attach || tmux new" 
+alias mux="tmux attach || tmux new" 
 alias ml="tmux list-sessions"
 alias df="df -h"
 alias du="du -h"
