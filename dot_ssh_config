@@ -5,7 +5,7 @@ Host aquila
 Host aquilaln1
     HostName aquilaln1
     User gonzalezpmdm
-    IdentityFile ~/.ssh/aquilaln1_rsa  
+    IdentityFile ~/.ssh/aquilaln1_rsa
 Host nscc
     HostName nscc02
     User gonzalez
