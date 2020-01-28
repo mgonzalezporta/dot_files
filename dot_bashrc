@@ -6,12 +6,13 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Exports
+export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
 export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
 export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
-export TERM=screen-256color
+export TERM=xterm-256color
 
 # Aliases
-alias tmux="${HOME}/local/bin/tmux -2"
+alias tmux="${HOME}/local/bin/tmux -2u"
 alias mux="tmux attach || tmux new" 
 alias ml="tmux list-sessions"
 alias df="df -h"
