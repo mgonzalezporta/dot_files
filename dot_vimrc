@@ -1,0 +1,66 @@
+" Leader
+let mapleader=","
+
+" UI
+set termguicolors
+syntax on
+set number
+set showcmd
+set cursorline
+filetype indent on
+set wildmenu
+set wildchar=<TAB>
+set wildignore+=*.DS_STORE,*.db
+set lazyredraw
+set showmatch
+set showmode
+set showcmd
+set laststatus=2
+
+" Solarized8
+packadd solarized8
+colorscheme solarized8_high
+set background=light
+
+" vim-airline
+packadd vim-airline
+packadd vim-airline-themes
+let g:airline_theme="bubblegum"
+
+" NERDTree
+packadd nerdtree
+nnoremap <leader>nt :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+map <leader>tp :tabp<cr>
+map <leader>tn :tabn<cr>
+
+" NERDCommenter
+packadd nerdcommenter
+
+" Encoding
+set encoding=utf-8
+
+" Spaces and tabs
+set tabstop=4
+set softtabstop=4
+set expandtab
+set list
+set listchars=tab:›\ ,trail:.,extends:#,nbsp:.
+set wrap
+set backspace=indent,eol,start
+
+" Navigate panes
+packadd vim-tmux-navigator
+
+" Search
+set ignorecase
+set hlsearch
+set incsearch
+
+" diff
+set diffopt=filler
+set diffopt+=iwhite
+
+" Spelling
+nnoremap <leader>s :set spell!
