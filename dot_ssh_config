@@ -7,7 +7,15 @@ Host aquilaln1
     User gonzalezpmdm
     IdentityFile ~/.ssh/aquilaln1_rsa
 Host nscc
-    HostName nscc02
+    Hostname lmnnsccmgt.gis.a-star.edu.sg
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_rsa
+Host nscc-userrig
+    Hostname lmnnsccmgt.gis.a-star.edu.sg
+    User userrig
+    IdentityFile ~/.ssh/nscc_rsa
+Host nscc-astar
+    HostName nscc01
     User gonzalez
     IdentityFile ~/.ssh/nscc_rsa
     ProxyCommand ssh -i ~/.ssh/nscc_rsa gonzalez@astar.nscc.sg nc %h %p
