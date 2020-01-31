@@ -10,10 +10,6 @@ Host nscc
     Hostname lmnnsccmgt.gis.a-star.edu.sg
     User gonzalez
     IdentityFile ~/.ssh/nscc_rsa
-Host nscc-userrig
-    Hostname lmnnsccmgt.gis.a-star.edu.sg
-    User userrig
-    IdentityFile ~/.ssh/nscc_rsa
 Host nscc-astar
     HostName nscc01
     User gonzalez
