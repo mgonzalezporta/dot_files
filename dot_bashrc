@@ -46,3 +46,8 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
 
 # Functions
 mcd() { mkdir -p "$1"; cd "$1";}
+
+####
+
+# NSCC
+alias userrig="ssh userrig@gis01"
