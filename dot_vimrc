@@ -38,6 +38,9 @@ map <leader>tn :tabn<cr>
 " NERDCommenter
 packadd nerdcommenter
 
+" Nextflow highlighting
+au BufNewFile,BufRead *.nf set filetype=groovy
+
 " Encoding
 set encoding=utf-8
 
@@ -64,3 +67,6 @@ set diffopt+=iwhite
 
 " Spelling
 nnoremap <leader>s :set spell!
+
+" Copy and paste from global clipboard
+set clipboard=unnamedplus
