@@ -1,8 +1,25 @@
-" Leader
+" Plugins
+call plug#begin()
+Plug('ctrlpvim/ctrlp.vim')
+Plug('lifepillar/vim-solarized8')
+Plug('vim-airline/vim-airline')
+Plug('vim-airline/vim-airline-themes')
+Plug('preservim/nerdcommenter')
+Plug('airblade/vim-gitgutter')
+Plug('christoomey/vim-tmux-navigator')
+Plug 'whatyouhide/vim-gotham'
+call plug#end()
+
+" Leader and key bindings
 let mapleader=","
+
+" Spelling
+nnoremap <leader>s :set spell!<CR>
 
 " UI
 set termguicolors
+colorscheme gotham
+let g:airline_theme="gotham"
 syntax on
 set number
 set showcmd
@@ -17,30 +34,6 @@ set showmode
 set showcmd
 set laststatus=2
 
-" Solarized8
-packadd solarized8
-colorscheme solarized8_high
-set background=light
-
-" vim-airline
-packadd vim-airline
-packadd vim-airline-themes
-let g:airline_theme="bubblegum"
-
-" NERDTree
-packadd nerdtree
-nnoremap <leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-map <leader>tp :tabp<cr>
-map <leader>tn :tabn<cr>
-
-" NERDCommenter
-packadd nerdcommenter
-
-" Nextflow highlighting
-au BufNewFile,BufRead *.nf set filetype=groovy
-
 " Encoding
 set encoding=utf-8
 
@@ -53,8 +46,9 @@ set listchars=tab:›\ ,trail:.,extends:#,nbsp:.
 set wrap
 set backspace=indent,eol,start
 
-" Navigate panes
-packadd vim-tmux-navigator
+" Do not comment new lines automatically
+autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
+autocmd BufNewFile,BufRead,FileType,OptionSet * setlocal formatoptions-=cro
 
 " Search
 set ignorecase
@@ -65,8 +59,25 @@ set incsearch
 set diffopt=filler
 set diffopt+=iwhite
 
-" Spelling
-nnoremap <leader>s :set spell!
+" Use the clipboard register for yank and put
+noremap y "+y
+noremap yy "+yy
+noremap p "+p
+noremap d "+d
+vnoremap y "+y
+vnoremap yy "+yy
+vnoremap p "+p
+vnoremap d "+d
 
-" Copy and paste from global clipboard
-set clipboard=unnamedplus
+" Enable mouse support
+set mouse=a
+
+" ctrlp: open new and existing files in a new tab
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
+
+" Nextflow syntax highlighting
+au BufNewFile,BufRead *.nf set filetype=groovy
