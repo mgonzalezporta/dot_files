@@ -59,15 +59,17 @@ set incsearch
 set diffopt=filler
 set diffopt+=iwhite
 
-" Use the clipboard register for yank and put
-noremap y "+y
-noremap yy "+yy
-noremap p "+p
-noremap d "+d
-vnoremap y "+y
-vnoremap yy "+yy
-vnoremap p "+p
-vnoremap d "+d
+" Use the clipboard register for yank, delete and put
+" noremap y "+y
+" vnoremap y "+y
+" noremap yy "+yy
+" vnoremap yy "+yy
+" noremap d "+d
+" vnoremap d "+d
+" noremap dd "+dd
+" vnoremap dd "+dd
+" noremap p "+p
+" vnoremap p "+p
 
 " Enable mouse support
 set mouse=a
