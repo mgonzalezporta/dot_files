@@ -23,8 +23,7 @@ alias grep="grep --color"
 alias ls="ls -hF --color"
 alias ll="ls -l"
 alias la="ls -la"
-alias llt="ls -lrt"
-alias lat="ls -lart"
+alias lt="ls -lart"
 alias c="clear"
 
 # Prompt
