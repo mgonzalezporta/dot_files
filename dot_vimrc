@@ -1,43 +1,87 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
-Plug('ctrlpvim/ctrlp.vim')
-Plug('lifepillar/vim-solarized8')
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
-Plug('preservim/nerdcommenter')
-Plug('airblade/vim-gitgutter')
-Plug('christoomey/vim-tmux-navigator')
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
 Plug 'whatyouhide/vim-gotham'
+Plug 'dikiaap/minimalist'
+Plug 'jiangmiao/auto-pairs'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'neomake/neomake'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tmhedberg/SimpylFold'
 call plug#end()
 
-" Leader and key bindings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Code checking with neomake
+let g:neomake_python_enabled_makers = ['pylint']
+call neomake#configure#automake('nrwi', 500)
+" nerdtree
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
+autocmd StdinReadPre * let s:std_in=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" fzf
+let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+let g:fzf_action = { 'return': 'tab split' }
+" vim-gutter
+set updatetime=100
+" " ctrlp: open new and existing files in a new tab
+" let g:ctrlp_open_new_file = 't'
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"     \ 'AcceptSelection("t")': ['<cr>'],
+"     \ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
+nmap <leader>nf :NERDTreeFind<CR>
+nmap <leader>nt :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
 
-" Spelling
-nnoremap <leader>s :set spell!<CR>
-
-" UI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UI and syntax
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors
 set termguicolors
+" Theme
 colorscheme gotham
 let g:airline_theme="gotham"
-syntax on
-set number
-set showcmd
+" let g:lightline = { 'colorscheme': 'gotham' }
+" Cursor line
 set cursorline
-filetype indent on
+hi CursorLine guibg=Grey10
+" Line numbers
+set number
+" Enable mouse support
+set mouse=a
+" Wild menu
 set wildmenu
 set wildchar=<TAB>
 set wildignore+=*.DS_STORE,*.db
-set lazyredraw
-set showmatch
-set showmode
-set showcmd
-set laststatus=2
-
 " Encoding
 set encoding=utf-8
-
-" Spaces and tabs
+" Syntax
+syntax on
+" Nextflow syntax highlighting
+au BufNewFile,BufRead *.nf set filetype=groovy
+" Indentation, spaces and tabs
+filetype indent on
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -45,21 +89,18 @@ set list
 set listchars=tab:›\ ,trail:.,extends:#,nbsp:.
 set wrap
 set backspace=indent,eol,start
-
 " Do not comment new lines automatically
 autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
 autocmd BufNewFile,BufRead,FileType,OptionSet * setlocal formatoptions-=cro
-
 " Search
 set ignorecase
 set hlsearch
 set incsearch
-
-" diff
-set diffopt=filler
-set diffopt+=iwhite
-
-" Use the clipboard register for yank, delete and put
+" Misc
+set showmatch
+set showmode
+set showcmd
+" " Use the clipboard register for yank, delete and put
 " noremap y "+y
 " vnoremap y "+y
 " noremap yy "+yy
@@ -71,15 +112,8 @@ set diffopt+=iwhite
 " noremap p "+p
 " vnoremap p "+p
 
-" Enable mouse support
-set mouse=a
-
-" ctrlp: open new and existing files in a new tab
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-    \ 'AcceptSelection("t")': ['<cr>'],
-    \ }
-
-" Nextflow syntax highlighting
-au BufNewFile,BufRead *.nf set filetype=groovy
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Misc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spelling
+nnoremap <leader>s :set spell!<CR>
