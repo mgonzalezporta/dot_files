@@ -14,8 +14,9 @@ export TERM=xterm-256color
 # Aliases
 alias tmux="${HOME}/local/bin/tmux -2u"
 alias mux="tmux attach || tmux new"
-alias ml="tmux list-sessions"
 alias ms="tmux source-file ~/.tmux.conf"
+alias ml="tmux list-sessions"
+alias mk="tmux list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
 alias df="df -h"
 alias du="du -h"
 alias gh="history | grep "
