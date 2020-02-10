@@ -14,7 +14,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'whatyouhide/vim-gotham'
 Plug 'dikiaap/minimalist'
 Plug 'jiangmiao/auto-pairs'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
 Plug 'machakann/vim-highlightedyank'
@@ -33,7 +33,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " fzf
 let g:fzf_nvim_statusline = 0 " disable statusline overwriting
-let g:fzf_action = { 'return': 'tab split' }
+"let g:fzf_action = { 'return': 'tab split' }
 " vim-gutter
 set updatetime=100
 " " ctrlp: open new and existing files in a new tab
@@ -42,6 +42,8 @@ set updatetime=100
 "     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
 "     \ 'AcceptSelection("t")': ['<cr>'],
 "     \ }
+" SimplyFold: default to unfolded
+autocmd FileType python setlocal foldenable foldlevel=20
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -51,6 +53,7 @@ nmap <leader>nf :NERDTreeFind<CR>
 nmap <leader>nt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>w :Windows<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 
