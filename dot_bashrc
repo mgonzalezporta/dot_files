@@ -9,7 +9,6 @@ fi
 export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
 export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
 export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
-export TERM=xterm-256color
 
 # Aliases
 alias tmux="${HOME}/local/bin/tmux -2u"
@@ -52,4 +51,7 @@ mcd() { mkdir -p "$1"; cd "$1";}
 ####
 
 # NSCC
-alias userrig="ssh userrig@gis01"
+if [ ${HOSTNAME} = "gis01" ]; then
+    alias userrig="ssh userrig@gis01"
+    source ${HOME}/setup_nscc_gonzalez.sh
+fi

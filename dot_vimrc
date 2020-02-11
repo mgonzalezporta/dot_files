@@ -19,6 +19,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -62,9 +63,11 @@ nnoremap <C-l> :tabnext<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
 set termguicolors
+set background=dark
+set t_Co=256
 " Theme
-colorscheme gotham
-let g:airline_theme="gotham"
+colorscheme gotham256
+let g:airline_theme='gotham256'
 " let g:lightline = { 'colorscheme': 'gotham' }
 " Cursor line
 set cursorline
