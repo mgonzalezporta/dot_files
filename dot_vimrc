@@ -7,8 +7,7 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"Plug 'itchyny/lightline.vim'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'whatyouhide/vim-gotham'
@@ -20,6 +19,8 @@ Plug 'neomake/neomake'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +35,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " fzf
 let g:fzf_nvim_statusline = 0 " disable statusline overwriting
-"let g:fzf_action = { 'return': 'tab split' }
 " vim-gutter
 set updatetime=100
 " " ctrlp: open new and existing files in a new tab
@@ -43,7 +43,7 @@ set updatetime=100
 "     \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
 "     \ 'AcceptSelection("t")': ['<cr>'],
 "     \ }
-" SimplyFold: default to unfolded
+" simplyfold: default to unfolded
 autocmd FileType python setlocal foldenable foldlevel=20
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,8 +55,15 @@ nmap <leader>nt :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>w :Windows<CR>
-nnoremap <C-h> :tabprevious<CR>
-nnoremap <C-l> :tabnext<CR>
+nnoremap <silent> <leader><C-h> :tabprevious<CR>
+nnoremap <silent> <leader><C-l> :tabnext<CR>
+" Do not yank deleted contents for these mappings
+noremap d "_d
+noremap s "_s
+noremap c "_c
+noremap dd "_dd
+" Spelling
+nnoremap <leader>s :set spell!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI and syntax
@@ -68,7 +75,7 @@ set t_Co=256
 " Theme
 colorscheme gotham256
 let g:airline_theme='gotham256'
-" let g:lightline = { 'colorscheme': 'gotham' }
+let g:airline_powerline_fonts = 0
 " Cursor line
 set cursorline
 hi CursorLine guibg=Grey10
@@ -106,7 +113,10 @@ set incsearch
 set showmatch
 set showmode
 set showcmd
-" " Use the clipboard register for yank, delete and put
+" Different cursors for insert vs other mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+" Use the clipboard register for yank, delete and put
 " noremap y "+y
 " vnoremap y "+y
 " noremap yy "+yy
@@ -117,9 +127,3 @@ set showcmd
 " vnoremap dd "+dd
 " noremap p "+p
 " vnoremap p "+p
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spelling
-nnoremap <leader>s :set spell!<CR>
