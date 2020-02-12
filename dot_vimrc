@@ -1,13 +1,19 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Install and run vim-plug on first run
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Install plugins
 call plug#begin()
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'whatyouhide/vim-gotham'
@@ -58,12 +64,20 @@ nnoremap <silent> <leader>w :Windows<CR>
 nnoremap <silent> <leader><C-h> :tabprevious<CR>
 nnoremap <silent> <leader><C-l> :tabnext<CR>
 " Do not yank deleted contents for these mappings
-noremap d "_d
-noremap s "_s
-noremap c "_c
-noremap dd "_dd
+nnoremap d "_d
+nnoremap s "_s
+nnoremap c "_c
+vnoremap d "_d
+vnoremap s "_s
+vnoremap c "_c
 " Spelling
 nnoremap <leader>s :set spell!<CR>
+" j/k will move virtual lines (lines that wrap)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+" Exit insert mode with jk or kj
+inoremap jk <esc>
+inoremap kj <esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI and syntax
