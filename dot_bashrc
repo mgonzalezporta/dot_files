@@ -60,4 +60,4 @@ mcd() { mkdir -p "$1"; cd "$1";}
 # NSCC
 [ ${HOSTNAME} = "gis01" ] && source ${HOME}/setup_nscc_gonzalez.sh
 # AWS
-[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ] && source ${HOME}/setup_aws_ubuntu.sh
+[[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ]] && source ${HOME}/setup_aws_ubuntu.sh
