@@ -58,8 +58,6 @@ mcd() { mkdir -p "$1"; cd "$1";}
 ####
 
 # NSCC
-if [ ${HOSTNAME} = "gis01" ]
-then
-    alias userrig="ssh userrig@gis01"
-    source ${HOME}/setup_nscc_gonzalez.sh
-fi
+[ ${HOSTNAME} = "gis01" ] && source ${HOME}/setup_nscc_gonzalez.sh
+# AWS
+[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ] && source ${HOME}/setup_aws_ubuntu.sh
