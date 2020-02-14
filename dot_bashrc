@@ -10,12 +10,19 @@ export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
 export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
 export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
 
+# tmux
+[ -f /usr/bin/tmux ] && TMUX_BIN="/usr/bin/tmux"
+[ -f ${HOME}/local/bin/tmux ] && TMUX_BIN="/usr/bin/tmux"
+
 # Aliases
-alias tmux="${HOME}/local/bin/tmux -2u"
-alias mux="tmux attach || tmux new"
-alias ms="tmux source-file ~/.tmux.conf"
-alias ml="tmux list-sessions"
-alias mk="tmux list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
+if [ -v TMUX_BIN ]
+then
+    alias tmux="${TMUX_BIN} -2u"
+    alias mux="tmux -2u attach || tmux new"
+    alias ms="tmux -2u source-file ~/.tmux.conf"
+    alias ml="tmux -2u list-sessions"
+    alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
+fi
 alias df="df -h"
 alias du="du -h"
 alias gh="history | grep "
@@ -51,7 +58,8 @@ mcd() { mkdir -p "$1"; cd "$1";}
 ####
 
 # NSCC
-if [ ${HOSTNAME} = "gis01" ]; then
+if [ ${HOSTNAME} = "gis01" ]
+then
     alias userrig="ssh userrig@gis01"
     source ${HOME}/setup_nscc_gonzalez.sh
 fi
