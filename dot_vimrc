@@ -71,13 +71,15 @@ vnoremap d "_d
 vnoremap s "_s
 vnoremap c "_c
 " Spelling
-nnoremap <leader>s :set spell!<CR>
+"nnoremap <leader>s :set spell!<CR>
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " Exit insert mode with jk or kj
 inoremap jk <esc>
 inoremap kj <esc>
+" Toggle search higlights
+nnoremap <leader>s :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " UI and syntax
