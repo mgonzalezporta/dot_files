@@ -1,19 +1,46 @@
-Host aquila
+# fix "sign_and_send_pubkey: no mutual signature supported"
+Host *
+    PubkeyAcceptedKeyTypes=+ssh-dss
+
+# aquila from astar/gis network
+Host aquila-astar
     HostName aquilaln2
     User gonzalezpmdm
-    IdentityFile ~/.ssh/aquilaln2_rsa
-Host aquilaln1
-    HostName aquilaln1
-    User gonzalezpmdm
-    IdentityFile ~/.ssh/aquilaln1_rsa
-Host nscc
-    Hostname lmnnsccmgt.gis.a-star.edu.sg
-    User gonzalez
-    IdentityFile ~/.ssh/nscc_rsa
-Host nscc-astar
-    HostName nscc01
-    User gonzalez
-    IdentityFile ~/.ssh/nscc_rsa
-    ProxyCommand ssh -i ~/.ssh/nscc_rsa gonzalez@astar.nscc.sg nc %h %p
+    IdentityFile ~/.ssh/aquila_rsa
+
+# GitHub
 Host github.com
     IdentityFile ~/.ssh/github_rsa
+
+# ssh nscc (random login node) from astar/gis network
+Host nscc-astar
+    HostName astar.nscc.sg
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_dsa
+
+# ssh nscc random login node from anywhere (requires sophos SSL VPN client running)
+Host nscc-vpn
+    HostName aspire.nscc.sg
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_dsa
+
+# ssh nscc01 login node specifically from astar/gis network
+Host nscc01-astar
+    HostName nscc01
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_dsa
+    ProxyCommand ssh -i ~/.ssh/nscc_dsa gonzalez@astar.nscc.sg nc %h %p
+
+# ssh lmn login node from astar/gis network
+Host lmn-astar
+    HostName 192.168.190.1
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_dsa
+    ProxyCommand ssh -i ~/.ssh/nscc_dsa gonzalez@astar.nscc.sg nc %h %p
+
+# ssh lmn login node from anywhere (require sophos SSL VPN client running)
+Host lmn-vpn
+    HostName 192.168.190.1
+    User gonzalez
+    IdentityFile ~/.ssh/nscc_dsa
+    ProxyCommand ssh -i ~/.ssh/nscc_dsa gonzalez@aspire.nscc.sg nc %h %p
