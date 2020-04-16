@@ -4,7 +4,7 @@ Host *
 
 # aquila from astar/gis network
 Host aquila-astar
-    HostName aquilaln2
+    HostName aquila.gis.a-star.edu.sg
     User gonzalezpmdm
     IdentityFile ~/.ssh/aquila_rsa
 
@@ -33,10 +33,9 @@ Host nscc01-astar
 
 # ssh lmn login node from astar/gis network
 Host lmn-astar
-    HostName 192.168.190.1
+    HostName lmnnsccmgt.gis.a-star.edu.sg
     User gonzalez
     IdentityFile ~/.ssh/nscc_dsa
-    ProxyCommand ssh -i ~/.ssh/nscc_dsa gonzalez@astar.nscc.sg nc %h %p
 
 # ssh lmn login node from anywhere (require sophos SSL VPN client running)
 Host lmn-vpn
