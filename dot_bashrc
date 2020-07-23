@@ -59,7 +59,16 @@ mcd() { mkdir -p "$1"; cd "$1";}
 
 # NSCC
 [ ${HOSTNAME} = "gis01" ] && source ${HOME}/setup_nscc_gonzalez.sh
+if type qstat &> /dev/null
+then
+    alias qa="qmgr -c 'list queue production' | grep state_count"
+    alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
+fi
+export THEANO_FLAGS="base_compiledir=/data/13000026/scratch/gonzalez"
 # AWS
 [[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ]] && source ${HOME}/setup_aws_ubuntu.sh
 # IAP
-. <(iap completion)
+if type iap &> /dev/null
+then
+    . <(iap completion)
+fi

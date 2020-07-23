@@ -1,6 +1,6 @@
 # fix "sign_and_send_pubkey: no mutual signature supported"
-Host *
-    PubkeyAcceptedKeyTypes=+ssh-dss
+#Host *
+    #PubkeyAcceptedKeyTypes=+ssh-dss
 
 # aquila from astar/gis network
 Host aquila-astar
