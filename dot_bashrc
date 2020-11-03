@@ -52,10 +52,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
     "$(history 1)" >> ~/.bash_eternal_history'
 
 # NSCC
-[ ${HOSTNAME} = "gis01" ] && source ${HOME}/setup_nscc_gonzalez.sh
-export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
-export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
-export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
+[[ ${HOSTNAME} = "gis01" ]] && source ${HOME}/setup_nscc_gonzalez.sh
 
 # AWS
 [[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ]] && source ${HOME}/setup_aws_ubuntu.sh
@@ -65,4 +62,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # IAP
-# . <(iap completion)
+if type iap &> /dev/null
+then
+    . <(iap completion)
+fi
