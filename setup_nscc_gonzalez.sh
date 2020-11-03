@@ -13,10 +13,12 @@ alias qstat="/opt/pbs/bin/qstat"
 alias qa="qmgr -c 'list queue production' | grep state_count"
 alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 
-# anaconda
-module load anaconda/3
-source /data/users/astar/gis/rpd/apps/conda/etc/profile.d/conda.sh
-conda activate mgonzalezporta-nscc
+# miniconda
+# module load anaconda/3
+# source /data/users/astar/gis/rpd/apps/conda/etc/profile.d/conda.sh
+# conda activate mgonzalezporta-nscc
+export PATH="/home/users/astar/gis/gonzalez/local/miniconda3/bin:$PATH"
+source /home/users/astar/gis/gonzalez/local/miniconda3/etc/profile.d/conda.sh
 
 # singularity
 module load singularity/3.6.4
