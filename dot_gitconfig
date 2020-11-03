@@ -1,14 +1,6 @@
 [user]
     name = Mar Gonzalez-Porta
     email = mgonzalezporta@gmail.com
-[diff]
-    tool = vimdiff
-[merge]
-    tool = vimdiff
-[difftool]
-    prompt = false
-[alias]
-    d = difftool
 [color]
     diff = auto
     status = auto

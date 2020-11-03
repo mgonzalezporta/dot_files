@@ -5,13 +5,9 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Exports
-export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
-export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
-export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
-
 # tmux
 [ -f /usr/bin/tmux ] && TMUX_BIN="/usr/bin/tmux"
+[ -f /usr/local/bin/tmux ] && TMUX_BIN="/usr/local/bin/tmux"
 [ -f ${HOME}/local/bin/tmux ] && TMUX_BIN="${HOME}/local/bin/tmux"
 
 # Aliases
@@ -26,12 +22,15 @@ fi
 alias df="df -h"
 alias du="du -h"
 alias gh="history | grep "
-alias grep="grep --color"
-alias ls="ls -hF --color"
+alias grep="grep"
+alias ls="ls -hF"
 alias ll="ls -l"
 alias la="ls -la"
 alias lt="ls -lart"
 alias c="clear"
+
+# Functions
+mcd() { mkdir -p "$1"; cd "$1";}
 
 # Prompt
 if [ -f /etc/bash_completion.d/git ]
@@ -52,14 +51,18 @@ shopt -s histappend
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
     "$(history 1)" >> ~/.bash_eternal_history'
 
-# Functions
-mcd() { mkdir -p "$1"; cd "$1";}
-
-####
-
 # NSCC
 [ ${HOSTNAME} = "gis01" ] && source ${HOME}/setup_nscc_gonzalez.sh
+export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
+export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
+export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
+
 # AWS
 [[ ${USER} = "ubuntu" && ${HOSTNAME} =~ "ip" ]] && source ${HOME}/setup_aws_ubuntu.sh
+
+# air
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
 # IAP
-. <(iap completion)
+# . <(iap completion)

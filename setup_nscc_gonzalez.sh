@@ -10,4 +10,4 @@ source /data/users/astar/gis/rpd/apps/conda/etc/profile.d/conda.sh
 conda activate mgonzalezporta-nscc
 
 # singularity
-module load singularity/3.4.0
+module load singularity/3.6.4
