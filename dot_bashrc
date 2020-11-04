@@ -24,9 +24,9 @@ alias du="du -h"
 alias gh="history | grep "
 alias grep="grep"
 alias ls="ls --color=auto"
-alias ll="ls -l"
-alias la="ls -la"
-alias lt="ls -lart"
+alias ll="ls -hl"
+alias la="ls -hla"
+alias lt="ls -hlart"
 alias c="clear"
 
 # Functions
