@@ -17,8 +17,8 @@ alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 # module load anaconda/3
 # source /data/users/astar/gis/rpd/apps/conda/etc/profile.d/conda.sh
 # conda activate mgonzalezporta-nscc
-export PATH="/home/users/astar/gis/gonzalez/local/miniconda3/bin:$PATH"
-source /home/users/astar/gis/gonzalez/local/miniconda3/etc/profile.d/conda.sh
+export PATH="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3/bin:$PATH"
+source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3/etc/profile.d/conda.sh
 
 # singularity
 module load singularity/3.6.4
