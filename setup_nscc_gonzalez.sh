@@ -2,7 +2,7 @@
 
 # paths
 # export PATH=/home/users/astar/gis/gonzalez/local/bin:${PATH}
-# export LD_LIBRARY_PATH=${HOME}/local/lib/:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/home/users/astar/gis/gonzalez/local/lib/:${LD_LIBRARY_PATH}
 # export LM_LICENSE_FILE=28518@mtr03:28518@mtr02:28518@mtr01
 # export THEANO_FLAGS="base_compiledir=/data/13000026/scratch/gonzalez"
 
@@ -28,4 +28,4 @@ alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 
 module load singularity/3.6.4
 
 # git
-module load git
+# module load git
