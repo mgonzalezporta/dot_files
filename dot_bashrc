@@ -5,20 +5,7 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# tmux
-[ -f /usr/bin/tmux ] && TMUX_BIN="/usr/bin/tmux"
-[ -f /usr/local/bin/tmux ] && TMUX_BIN="/usr/local/bin/tmux"
-[ -f ${HOME}/local/bin/tmux ] && TMUX_BIN="${HOME}/local/bin/tmux"
-
 # Aliases
-if [ ! -z "${TMUX_BIN}" ]
-then
-    alias tmux="${TMUX_BIN} -2u"
-    alias mux="tmux -2u attach || tmux new"
-    alias ms="tmux -2u source-file ~/.tmux.conf"
-    alias ml="tmux -2u list-sessions"
-    alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
-fi
 alias df="df -h"
 alias du="du -h"
 alias gh="history | grep "
@@ -60,9 +47,3 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
 # air
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-
-# IAP
-if type iap &> /dev/null
-then
-    . <(iap completion)
-fi
