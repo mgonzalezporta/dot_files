@@ -28,7 +28,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'svermeulen/vim-cutlass'
 call plug#end()
 
