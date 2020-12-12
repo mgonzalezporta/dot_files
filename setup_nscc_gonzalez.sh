@@ -17,6 +17,13 @@ alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 # alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda"
 # source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
 
+# tmux
+alias tmux="/data/13000026/pipeline/dev/gonzalez/tools/tmux/tmux -2u"
+alias mux="tmux -2u attach || tmux new"
+alias ms="tmux -2u source-file ~/.tmux.conf"
+alias ml="tmux -2u list-sessions"
+alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
+
 # singularity
 module load singularity/3.6.4
 
