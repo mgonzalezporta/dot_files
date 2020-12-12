@@ -14,8 +14,8 @@ alias qa="qmgr -c 'list queue production' | grep state_count"
 alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 
 # miniconda
-alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda"
-source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
+# alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda"
+# source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
 
 # singularity
 module load singularity/3.6.4
