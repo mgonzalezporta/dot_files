@@ -9,7 +9,7 @@ fi
 alias df="df -h"
 alias du="du -h"
 alias gh="history | grep "
-alias grep="grep"
+alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias ll="ls -hl"
 alias la="ls -hla"
