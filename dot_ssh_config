@@ -10,7 +10,7 @@ Host aquila-astar
 
 # GitHub
 Host github.com
-    IdentityFile ~/.ssh/github_rsa
+    IdentityFile ~/.ssh/id_rsa_github
 
 # ssh nscc (random login node) from astar/gis network
 Host nscc-astar
