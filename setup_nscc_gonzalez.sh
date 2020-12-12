@@ -17,6 +17,9 @@ alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 # alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda"
 # source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
 
+# vim
+alias tmux="/home/users/astar/gis/gonzalez/local/bin/vim"
+
 # tmux
 alias tmux="/home/users/astar/gis/gonzalez/local/bin/tmux -2u"
 alias mux="tmux -2u attach || tmux new"
