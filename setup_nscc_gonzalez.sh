@@ -18,7 +18,7 @@ alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/cond
 source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
 
 # vim
-alias tmux="/home/users/astar/gis/gonzalez/local/bin/vim"
+alias vim="/home/users/astar/gis/gonzalez/local/bin/vim"
 
 # tmux
 alias tmux="/home/users/astar/gis/gonzalez/local/bin/tmux -2u"
