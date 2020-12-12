@@ -22,3 +22,6 @@ alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 
 
 # singularity
 module load singularity/3.6.4
+
+# conda
+conda activate nscc-gonzalez
