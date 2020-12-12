@@ -15,7 +15,19 @@ alias qm="qstat | grep '^[0-9]' | awk '{print \$5, \$2}' | sort | uniq -c"
 
 # miniconda
 alias conda="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda"
-source /data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh" ]; then
+        . "/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/13000026/pipeline/dev/gonzalez/tools/miniconda3-py37/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 
 # vim
 alias vim="/home/users/astar/gis/gonzalez/local/bin/vim"
