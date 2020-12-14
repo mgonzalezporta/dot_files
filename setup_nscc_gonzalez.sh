@@ -23,3 +23,6 @@ alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 
 # singularity
 module load singularity/3.6.4
 
+# anaconda
+module load anaconda/3
+source activate nscc-gonzalez-local
