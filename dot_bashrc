@@ -42,7 +42,7 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
 [[ ${HOSTNAME} = "gis01" ]] && source ${HOME}/setup_nscc_gonzalez.sh
 
 # AWS
-[[ ${HOSTNAME} =~ "ip" ]] && source ${HOME}/setup_aws_ubuntu.sh
+[[ ${HOSTNAME} =~ "ip" ]] && source ${HOME}/.setup_aws_ubuntu.sh
 
 # air
 export CLICOLOR=1
