@@ -16,13 +16,8 @@ alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 
 mcd() { mkdir -p "$1"; cd "$1";}
 
 # Prompt
-if [ -f /etc/bash_completion.d/git ]
-then
-    PS1='\n[`pwd`]\n\u@\h$(__git_ps1 " (%s)")$ '
-    source /etc/bash_completion.d/git
-else
-    PS1='\n[`pwd`]\n\u@\h$ '
-fi
+PS1='\n[`pwd`]\n\u@\h$(__git_ps1 " (%s)")$ '
+# PS1='\n[`pwd`]\n\u@\h$ '
 
 # Bash history
 export HISTFILESIZE=1000000
