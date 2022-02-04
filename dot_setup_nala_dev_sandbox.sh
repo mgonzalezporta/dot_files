@@ -48,3 +48,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+# change default conda environment
+conda activate jupyter-mgonzalezporta
