@@ -1,4 +1,4 @@
-# Aliases
+# aliases
 alias df="df -h"
 alias du="du -h"
 alias grep="grep --color=auto"
@@ -12,19 +12,15 @@ alias ms="tmux -2u source-file ~/.tmux.conf"
 alias ml="tmux -2u list-sessions"
 alias mk="tmux -2u list-sessions | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t"
 
-# Functions
+# functions
 mcd() { mkdir -p "$1"; cd "$1";}
 
-# Prompt
-if [ -f /etc/bash_completion.d/git ]
-then
-    PS1='\n[`pwd`]\n\u@\h$(__git_ps1 " (%s)")$ '
-    source /etc/bash_completion.d/git
-else
-    PS1='\n[`pwd`]\n\u@\h$ '
-fi
+# prompt
+PS1='\n[`pwd`]\n\u@\h$(__git_ps1 " (%s)")$ '
+# replace by the line below to ommit info on the current git branch
+# PS1='\n[`pwd`]\n\u@\h$ '
 
-# Bash history
+# bash history
 export HISTFILESIZE=1000000
 export HISTSIZE=100000
 export HISTCONTROL=ignorespace
@@ -48,5 +44,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
 # change default conda environment
 conda activate jupyter-mgonzalezporta
