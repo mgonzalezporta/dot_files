@@ -1,0 +1,21 @@
+# dev-sandbox-mgonzalezporta
+Host dev-sandbox-mgonzalezporta
+    HostName dev-sandbox.nalagenetics.com
+    User jupyter-mgonzalezporta
+    IdentityFile ~/.ssh/nala-mar.pem
+
+# dev-sandbox-ubuntu
+Host dev-sandbox-ubuntu
+    HostName dev-sandbox.nalagenetics.com
+    User ubuntu
+    IdentityFile ~/.ssh/dev-sandbox.pem
+
+# bitbucket
+Host bitbucket.org
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/bitbucket_rsa
+
+# github
+Host github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/github_ed25519.pub
