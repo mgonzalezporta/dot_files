@@ -2,4 +2,4 @@
 #   - backup existing .bashrc
 #   - save the present file as .bashrc
 
-source ${HOME}/.setup_nala_dev_sandbox.sh
+source ${HOME}/.setup_nala_pro.sh
