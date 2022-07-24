@@ -34,3 +34,6 @@ export HISTTIMEFORMAT='%F %T '
 shopt -s histappend
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
     "$(history 1)" >> ~/.bash_eternal_history'
+
+# path
+export PATH=$PATH:/opt/homebrew/bin
