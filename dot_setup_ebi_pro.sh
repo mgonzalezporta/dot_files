@@ -4,6 +4,9 @@ if [ -n "${SETUP_EBI_PRO_SOURCED:-}" ]; then
 fi
 export SETUP_EBI_PRO_SOURCED=1
 
+# Hide macOS warning about the system Bash 3.2 being deprecated.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # aliases
 alias df="df -h"
 alias du="du -h"
