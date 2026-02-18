@@ -48,8 +48,17 @@ shopt -s histappend
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
     "$(history 1)" >> ~/.bash_eternal_history'
 
-# path
-case ":$PATH:" in
-    *":/opt/homebrew/bin:"*) ;;
-    *) export PATH="/opt/homebrew/bin:$PATH" ;;
-esac
+# Homebrew environment (preferred), with fallback for systems without brew.
+if command -v brew >/dev/null 2>&1; then
+    eval "$(brew shellenv)"
+else
+    case ":$PATH:" in
+        *":/opt/homebrew/bin:"*) ;;
+        *) export PATH="/opt/homebrew/bin:$PATH" ;;
+    esac
+    case ":$PATH:" in
+        *":/opt/homebrew/sbin:"*) ;;
+        *) export PATH="/opt/homebrew/sbin:$PATH" ;;
+    esac
+fi
+
