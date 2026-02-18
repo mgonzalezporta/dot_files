@@ -1,3 +1,9 @@
+# avoid double-sourcing
+if [ -n "${SETUP_EBI_PRO_SOURCED:-}" ]; then
+    return 0
+fi
+export SETUP_EBI_PRO_SOURCED=1
+
 # aliases
 alias df="df -h"
 alias du="du -h"

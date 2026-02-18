@@ -5,45 +5,5 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Aliases
-alias df="df -h"
-alias du="du -h"
-alias gh="history | grep "
-alias grep="grep --color=auto"
-alias ls="ls --color=auto"
-alias ll="ls -hl"
-alias la="ls -hla"
-alias lt="ls -hlart"
-alias c="clear"
-
-# Functions
-mcd() { mkdir -p "$1"; cd "$1";}
-
-# Prompt
-if [ -f /etc/bash_completion.d/git ]
-then
-    PS1='\n[`pwd`]\n\u@\h$(__git_ps1 " (%s)")$ '
-    source /etc/bash_completion.d/git
-else
-    PS1='\n[`pwd`]\n\u@\h$ '
-fi
-
-# Bash history
-export HISTFILESIZE=1000000
-export HISTSIZE=100000
-export HISTCONTROL=ignorespace
-export HISTIGNORE='ls:history:ll'
-export HISTTIMEFORMAT='%F %T '
-shopt -s histappend
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $(pwd) \
-    "$(history 1)" >> ~/.bash_eternal_history'
-
-# NSCC
-[[ ${HOSTNAME} = "gis01" ]] && source ${HOME}/setup_nscc_gonzalez.sh
-
-# AWS
-[[ ${HOSTNAME} =~ "ip" ]] && source ${HOME}/.setup_aws_ubuntu.sh
-
-# air
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+# EBI
+[[ ${HOSTNAME} = "LN734NXDYJ" ]] && source ${HOME}/setup_bashrc_ebi_pro.sh
