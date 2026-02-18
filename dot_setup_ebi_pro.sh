@@ -49,8 +49,17 @@ mcd() {
 }
 
 # Enable bash completion (including git helpers) when installed via Homebrew.
-if command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    . "$(brew --prefix)/etc/bash_completion"
+if command -v brew >/dev/null 2>&1; then
+    brew_prefix="$(brew --prefix)"
+    if [ -f "${brew_prefix}/etc/profile.d/bash_completion.sh" ]; then
+        . "${brew_prefix}/etc/profile.d/bash_completion.sh"
+    elif [ -f "${brew_prefix}/etc/bash_completion" ]; then
+        . "${brew_prefix}/etc/bash_completion"
+    fi
+    # __git_ps1 is provided by git-prompt.sh; source it explicitly when available.
+    if [ -f "${brew_prefix}/etc/bash_completion.d/git-prompt.sh" ]; then
+        . "${brew_prefix}/etc/bash_completion.d/git-prompt.sh"
+    fi
 fi
 
 # Prompt: show cwd, user@host, and git branch when __git_ps1 is available.
