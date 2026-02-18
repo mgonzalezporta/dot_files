@@ -1,0 +1,5 @@
+# deployment instructions:
+#   - backup existing .bashrc
+#   - save the present file as .bashrc
+
+source ${HOME}/.setup_ebi_pro.sh
