@@ -28,9 +28,10 @@ Typed at the shell prompt, inside or outside tmux. Defined in every `dot_setup_*
 | `mux`   | Attach to the last tmux session, or start a new one  |
 | `ms`    | Reload `~/.tmux.conf`                                |
 | `ml`    | List all sessions                                    |
+| `mk <session>` | Kill one session, e.g. `mk 4` (EBI MacBook only)  |
 | `mk`    | Kill **all** sessions                                |
 
-`mk` asks for confirmation only on the EBI MacBook (`dot_setup_ebi_pro.sh`). On the other machines it kills everything immediately.
+On the EBI MacBook (`dot_setup_ebi_pro.sh`), `mk` with no name asks for confirmation first. On the other machines it kills everything immediately and does not take a session name.
 
 ## General
 
@@ -59,7 +60,7 @@ For an interactive session picker: `Prefix :`, then `choose-tree -s`.
 | Shortcut             | Action                                               |
 | -------------------- | ---------------------------------------------------- |
 | `Ctrl-w`             | New window                                           |
-| `Prefix w`           | Rename the current window                            |
+| `Ctrl-Shift-w` / `Prefix w` | Rename the current window                     |
 | `Ctrl-Shift-Left`    | Previous window                                      |
 | `Ctrl-Shift-Right`   | Next window                                          |
 | `Prefix Shift-Left`  | Move the current window one place left (repeatable)  |
@@ -116,4 +117,4 @@ To check that a key gets through, run `cat -v` outside tmux and press it: `Ctrl-
 - Status bar right side shows date, time and hostname, e.g. `13-Oct-2026 10:30 (hostname)`.
 - 256-colour and true-colour support (`xterm-256color` with `Tc` override).
 - `xterm-keys` on, so modified arrow keys work.
-- Extended keys on, so `Ctrl-Shift`-letter combinations reach tmux. Without it, terminals send the same code for `Ctrl-Shift-s` and `Ctrl-s`.
+- Extended keys on, so `Ctrl-Shift`-letter combinations reach tmux. Without it, terminals send the same code for `Ctrl-Shift-s` and `Ctrl-s`. iTerm reports `Ctrl-Shift-s` to tmux as `C-S-S`, so new `Ctrl-Shift` bindings need that spelling too.
