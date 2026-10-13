@@ -52,10 +52,7 @@ source ~/.bashrc
 
 ### tmux helpers (only when tmux is installed)
 
-- `mux` -> attach current tmux session or create one
-- `ms` -> reload `~/.tmux.conf`
-- `ml` -> list tmux sessions
-- `mk` -> prompt, then kill all tmux sessions if confirmed
+`mux`, `ms`, `ml` and `mk` are documented with the tmux key bindings in [README_tmux.md](README_tmux.md#shell-helpers).
 
 ### Functions
 
