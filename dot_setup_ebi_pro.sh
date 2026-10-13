@@ -1,8 +1,11 @@
 # Guard: load this setup only once per shell session.
-if [ -n "${SETUP_EBI_PRO_SOURCED:-}" ]; then
+# Not exported, so child shells (e.g. tmux panes) run the setup too.
+# Drop the old exported guard, which made tmux panes skip the setup.
+unset SETUP_EBI_PRO_SOURCED
+if [ -n "${_setup_ebi_pro_loaded:-}" ]; then
     return 0
 fi
-export SETUP_EBI_PRO_SOURCED=1
+_setup_ebi_pro_loaded=1
 
 # Hide macOS warning about the system Bash 3.2 being deprecated.
 export BASH_SILENCE_DEPRECATION_WARNING=1
