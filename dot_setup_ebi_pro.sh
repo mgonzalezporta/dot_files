@@ -33,7 +33,12 @@ if command -v tmux >/dev/null 2>&1; then
     alias mux="tmux -2u attach || tmux new"
     alias ms="tmux -2u source-file ~/.tmux.conf"
     alias ml="tmux -2u list-sessions"
+    # mk <session>: kill that session; mk: kill all sessions after confirming.
     mk() {
+        if [ -n "$1" ]; then
+            tmux -2u kill-session -t "$1"
+            return
+        fi
         printf "Kill ALL tmux sessions? [y/N] "
         read -r reply
         case "$reply" in
